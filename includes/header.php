@@ -13,9 +13,10 @@
     <!-- ICONOS -->
     <script src="https://kit.fontawesome.com/1583a3bcbb.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="text-bg-light">
     <nav class="navbar" style="background-color: #e3f2fd;">
         <div class="container">
             <a href="index.php" class="navbar-brand"><strong>CRUD PRUEBA</strong></a>
         </div>
     </nav>
+    

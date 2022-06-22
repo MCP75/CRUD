@@ -17,12 +17,20 @@
         $id = $_GET['id'];
         $title = $_POST['title'];
         $description = $_POST['description'];
+        
+        $estado_fav = $row['favorite'];
+        if($estado_fav==0 ){
+            $query = "UPDATE task set title = '$title', description = '$description' WHERE id = $id";
+            mysqli_query($conn, $query);
+            $_SESSION['message'] = 'Tarea actualizada';
+            $_SESSION['message_type'] = 'warning';
+        }else{
+            $_SESSION['message'] = 'No se puede editar';
+            $_SESSION['message_type'] = 'warning';
+        }
+        
 
-        $query = "UPDATE task set title = '$title', description = '$description' WHERE id = $id";
-        mysqli_query($conn, $query);
-
-        $_SESSION['message'] = 'Tarea actualizada';
-        $_SESSION['message_type'] = 'warning';
+        
         header("Location: index.php");
     }
 

@@ -30,28 +30,49 @@
         
         
         <div class="col-md-8">
-            <table class="table table-bordered">
+            <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
+                        <th><i class="fa-solid fa-star"></i></th>
                         <th>Title</th>
                         <th>Description</th>
                         <th>Created At</th>
-                        <th>Actions</th>
+                        <th>Actions</th>  
+                          
                     </tr>
                 </thead>
                 <tbody>
                     <?php 
                     $query = "SELECT * FROM task";
                     $result_tasks = mysqli_query($conn, $query);
-                    while($row = mysqli_fetch_array($result_tasks)) { ?>
+                    $row = mysqli_fetch_array($result_tasks);
+                    
+                    while($row = mysqli_fetch_array($result_tasks)) { 
+                        if($row['favorite'] == 1){
+                        $format_star = 'solid';
+                        $format_trash = 'fa-solid fa-ban';
+                        $format_pen = 'fa-solid fa-ban';
+                        $format_edit = 'cant_edit.php';
+                        $format_delete = 'cant_delete.php';
+                        }
+                        if($row['favorite'] == 0){
+                        $format_star='regular';
+                        $format_trash = 'fa-solid fa-trash-can';
+                        $format_pen = 'fa solid fa-pen';
+                        $format_edit = 'edit.php';
+                        $format_delete = 'delete.php';
+                        }?>
                         <tr>
+                            <td>
+                                <a href="favorite.php?id=<?php echo $row['id']?>" class="text text-warning"><i class="fa-<?php echo $format_star;?> fa-star"></i></a>
+                            </td>   
                             <td> <?php echo $row['title']?> </td>
                             <td> <?php echo $row['description']?> </td>
                             <td> <?php echo $row['created_at']?> </td>
-                            <td><a href="edit.php?id=<?php echo $row['id']?>"
-                            class="btn btn-secondary"class="fas fa-marker"><i class="fa-solid fa-pen"></i></a>
-                            <a href="delete_task.php?id=<?php echo $row['id']?>"
-                            class="btn btn-danger" class="far fa-trash-alt"><i class="fa-solid fa-trash-can"></i></a>
+                            <td> <a href="<?php echo $format_edit; ?>?id=<?php echo $row['id']?>"
+                            class="btn btn-secondary"><i class="<?php echo $format_pen; ?>"></i></a>
+                            <a href="<?php echo $format_delete ?>?id=<?php echo $row['id']?>"
+                            class="btn btn-danger" ><i class="<?php echo $format_trash;?>"></i></a>
                             </td>
                         </tr>
                     <?php } ?>

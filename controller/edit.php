@@ -1,6 +1,5 @@
 <?php
-
-    include("db.php");
+    include("../db.php");
 
     if(isset($_GET['id'])) {
         $id = $_GET['id'];
@@ -27,16 +26,12 @@
         }else{
             $_SESSION['message'] = 'No se puede editar';
             $_SESSION['message_type'] = 'warning';
-        }
-        
-
-        
-        header("Location: index.php");
+        }        
+        header("Location: ../user.php");
     }
-
 ?>
 
-<?php include("includes/header.php") ?>
+<?php include("../includes/header.php") ?>
 
 <div class="container p-4">
     <div class="row">
@@ -59,4 +54,4 @@
 
 </div>
 
-<?php include("includes/footer.php") ?>
+<?php include("../includes/footer.php") ?>

@@ -1,6 +1,6 @@
 <?php
 
-include("db.php");
+include("../db.php");
 
 if (isset($_POST['save_task'])){
     $title = $_POST['title'];
@@ -15,8 +15,7 @@ if (isset($_POST['save_task'])){
     $_SESSION['message'] = 'Tarea guardada satisfactoriamente';
     $_SESSION['message_type'] = 'success';
 
-    header("Location: index.php");
+    header("Location: ../user.php");
     
 }
-
 ?>

@@ -17,6 +17,7 @@
     <nav class="navbar" style="background-color: #e3f2fd;">
         <div class="container">
             <a href="index.php" class="navbar-brand"><strong>CRUD PRUEBA</strong></a>
+            <a href="login.php" class="btn btn-secondary"><i class="fa-solid fa-user"></i></a>
         </div>
     </nav>
     
